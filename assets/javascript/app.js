@@ -115,6 +115,17 @@ var game = {
 	},
 	nextQuestion: function () {
 
+		// set counter back to 30
+		game.counter = 30;
+
+		// set HTML back on page for counter
+		$("#counter").html(game.counter);
+
+		game.currentQuestion++;
+
+		// load the question
+		game.loadQuestion();
+
 	},
 	timeUp: function () {
 
@@ -127,7 +138,7 @@ var game = {
 		clearInterval(timer);
 
 		// target of what we clicked
-		if($(e.target).data("name")==questions[game.currentQuestion].correctAnswer) {
+		if ($(e.target).data("name") == questions[game.currentQuestion].correctAnswer) {
 
 			game.answeredCorrectly();
 		} else {
@@ -138,12 +149,57 @@ var game = {
 
 		console.log("CORRECT!");
 
+		// clears the times
+		clearInterval(timer);
+
+		// increases the correct count
+		game.correct++;
+
+		// writes to HTML page
+		$("#subWrapper").html("<h2>YOU GOT IT RIGHT!</h2>");
+
+		// takes us to result screen/next question
+		if (game.currentQuestion == questions.length - 1) {
+
+			// wait 3 seconds and if it is just question we go to result screen
+			setTimeout(game.results, 3 * 1000);
+
+		} else {
+
+			// load the next question
+			setTimeout(game.nextQuestion, 3 * 1000);
+
+		}
+
 	},
+
 	answeredIncorrectly: function () {
 
 		console.log("WRONG!");
 
+		// clears the times
+		clearInterval(timer);
+
+		// increases the incorrect count
+		game.incorrect++;
+
+		// writes to HTML page
+		$("#subWrapper").html("<h2>YOU GOT IT WRONG!</h2>");
+
+		// takes us to result screen/next question
+		if (game.currentQuestion == questions.length - 1) {
+
+			// wait 3 seconds and if it is just question we go to result screen
+			setTimeout(game.results, 3 * 1000);
+
+		} else {
+
+			// load the next question
+			setTimeout(game.nextQuestion, 3 * 1000);
+		}
+
 	},
+
 	reset: function () {
 
 	}
