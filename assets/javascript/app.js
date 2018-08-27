@@ -8,10 +8,16 @@ $("#start").on("click", function () {
 })
 // tell me if i was incorrect or correct
 // e is passing thorugh the event
-$(document).on("click", '.answer-button', function (e) {
+$(document).on('click', '.answer-button', function (e) {
 
 	game.clicked(e);
 
+})
+
+// Resets game
+$(document).on('click', '#reset', function(){
+
+	game.reset();
 })
 
 // Trivia questions 
@@ -62,10 +68,26 @@ var questions = [{
 	image: "placeholder9"
 }, {
 	question: "test question 10?",
-	answers: ["test answer 10.1", "test answer 10.2", "test answer 10.3", "test answer 10.4"],
+	answers: ["test answer 10.1", "test answer 10.2","test answer 10.3", "test answer 10.4"],
 	correctAnswer: "test answer 10.1",
 	image: "placeholder10"
-}];
+}, {
+	question: "test question 11?",
+	answers: ["test answer 11.1", "test answer 11.2","test answer 11.3", "test answer 11.4"],
+	correctAnswer: "test answer 11.1",
+	image: "placeholder11"
+}, {
+	question: "test question 12?",
+	answers: ["test answer 12.1", "test answer 12.2","test answer 12.3", "test answer 12.4"],
+	correctAnswer: "test answer 12.1",
+	image: "placeholder12"
+}, {
+	question: "test question 13?",
+	answers: ["test answer 13.1", "test answer 13.2","test answer 13.3", "test answer 13.4"],
+	correctAnswer: "test answer 13.1",
+	image: "placeholder10" }
+
+];
 
 // Game object with various properties
 // methods
@@ -101,8 +123,11 @@ var game = {
 		// every second we will run the game.contdown function
 		timer = setInterval(game.countDown, 1000);
 
+		// shows timer on page
+		$("#subWrapper").html("<h2> TIME REMAINING <span id='counter'>30 </span> SECONDS</h2>");
+
 		// questions are shown in the div with subwrapper
-		$("#subWrapper").html("<h2>" + questions[game.currentQuestion].question + "</h2>");
+		$("#subWrapper").append("<h2>" + questions[game.currentQuestion].question + "</h2>");
 
 		// posting answers to the page as buttons
 		for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
@@ -168,6 +193,10 @@ var game = {
 		$("#subWrapper").append("<h3>INCORRECT: " + game.incorrect + "</h3>");
 
 		$("#subWrapper").append("<h3>UNANSWERED: " + game.unanswered + "</h3>");
+
+		// reset
+
+		$("#subWrapper").append("<button id='reset'>RESET</button>");
 
 	},
 	clicked: function (e) {
@@ -241,6 +270,14 @@ var game = {
 	},
 
 	reset: function () {
+
+		// sets everything back to original amounts
+		game.currentQuestion = 0;
+		game.counter = 0;
+		game.correct = 0;
+		game.incorrect = 0;
+		game.unanswered = 0;
+		game.loadQuestion();
 
 	}
 }
