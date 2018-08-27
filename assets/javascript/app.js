@@ -75,6 +75,7 @@ var game = {
 	counter: 30,
 	correct: 0,
 	incorrect: 0,
+	unanswered: 0,
 
 	// countdown menthod. Changes the timer.
 	countDown: function () {
@@ -129,8 +130,44 @@ var game = {
 	},
 	timeUp: function () {
 
+		// timer stops
+		clearInterval(timer);
+
+		// questions unanswered increase
+		game.unanswered++;
+
+		// tells us we have ran out of time
+		$("#subWrapper").html("<h2>OUT OF TIME</h2>");
+
+		// correct answer would have been
+		$("#subWrapper").append("<h3>THE CORRECT ANSWER WAS: " + questions[game.currentQuestion].correctAnswer + "</h3>");
+
+		if (game.currentQuestion == questions.length - 1) {
+
+			// wait 3 seconds and if it is just question we go to result screen
+			setTimeout(game.results, 3 * 1000);
+
+		} else {
+
+			// load the next question
+			setTimeout(game.nextQuestion, 3 * 1000);
+
+		}
+
+
 	},
 	results: function () {
+
+		clearInterval(timer);
+
+		$("#subWrapper").html("<h2>ALL DONE!</h2>");
+
+		// score was
+		$("#subWrapper").append("<h3>CORRECT: " + game.correct + "</h3>");
+
+		$("#subWrapper").append("<h3>INCORRECT: " + game.incorrect + "</h3>");
+
+		$("#subWrapper").append("<h3>UNANSWERED: " + game.unanswered + "</h3>");
 
 	},
 	clicked: function (e) {
@@ -185,6 +222,9 @@ var game = {
 
 		// writes to HTML page
 		$("#subWrapper").html("<h2>YOU GOT IT WRONG!</h2>");
+
+		// correct answer would have been
+		$("#subWrapper").append("<h3>THE CORRECT ANSWER WAS: " + questions[game.currentQuestion].correctAnswer + "</h3>");
 
 		// takes us to result screen/next question
 		if (game.currentQuestion == questions.length - 1) {
