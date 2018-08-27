@@ -22,70 +22,70 @@ $(document).on('click', '#reset', function(){
 
 // Trivia questions 
 var questions = [{
-	question: "test question 1?",
-	answers: ["test answer 1.1", "test answer 1.2", "test answer 1.3", "test answer 1.4"],
-	correctAnswer: "test answer 1.3",
-	image: "placeholder1"
+	question: "The penalty for killing a cat, 4,000 years ago in Egypt, was?",
+	answers: ["Stoning", "Death", "1 year in prision", "Mummification"],
+	correctAnswer: "Death",
+	image: "assets/images/catinegypt"
 }, {
-	question: "test question 2?",
-	answers: ["test answer 2.1", "test answer 2.2", "test answer 2.3", "test answer 2.4"],
-	correctAnswer: "test answer 2.1",
-	image: "placeholder2"
+	question: "How high can a cat jump?",
+	answers: ["Higher than a kite", "9 feet", "3 feet", "As much as seven times its height"],
+	correctAnswer: "As much as seven times its height",
+	image: "assets/images/catjumping"
 }, {
-	question: "test question 3?",
-	answers: ["test answer 3.1", "test answer 3.2", "test answer 3.3", "test answer 3.4"],
-	correctAnswer: "test answer 3.3",
-	image: "placeholder3"
+	question: "How much do cats groom themselves?",
+	answers: ["A cat will spend nearly 30% of its life grooming itself", "All the time", "Cats like to go to the salon", "A cat will spend nearly 60% of its life grooming itself"],
+	correctAnswer: "A cat will spend nearly 30% of its life grooming itself",
+	image: "assets/images/catgrooming"
 }, {
-	question: "test question 4?",
-	answers: ["test answer 4.1", "test answer 4.2", "test answer 4.3", "test answer 4.4"],
-	correctAnswer: "test answer 4.4",
-	image: "placeholder4"
+	question: "How much do cats sleep?",
+	answers: ["Too much", "32 hours a day", "16 hours a day", "12 hours a day"],
+	correctAnswer: "16 hours a day",
+	image: "assets/images/catsleeping"
 }, {
-	question: "test question 5?",
-	answers: ["test answer 5.1", "test answer 5.2", "test answer 5.3", "test answer 5.4"],
-	correctAnswer: "test answer 5.4",
-	image: "placeholder5"
+	question: "What is the weight of the heaviest cat ever recorded?",
+	answers: ["46 lbs", "100 lbs", "38 lbs", "52 lbs"],
+	correctAnswer: "46 lbs",
+	image: "assets/images/fatcat"
 }, {
-	question: "test question 6?",
-	answers: ["test answer 6.1", "test answer 6.2", "test answer 6.3", "test answer 6.4"],
-	correctAnswer: "test answer 6.1",
-	image: "placeholder6"
+	question: "How many ribs do cats have?",
+	answers: ["15 ribs", "13 ribs", "11 ribs", "20 ribs"],
+	correctAnswer: "13 ribs",
+	image: "assets/images/catribs"
 }, {
-	question: "test question 7?",
-	answers: ["test answer 7.1", "test answer 7.2", "test answer 7.3", "test answer 7.4"],
-	correctAnswer: "test answer 7.3",
-	image: "placeholder7"
+	question: "Where did black cat superstition originate?",
+	answers: ["Africa", "Asia", "Mexico", "America"],
+	correctAnswer: "America",
+	image: "assets/images/catsuper"
 }, {
-	question: "test question 8?",
-	answers: ["test answer 8.1", "test answer 8.2", "test answer 8.3", "test answer 8.4"],
-	correctAnswer: "test answer 8.2",
-	image: "placeholder8"
+	question: "What is a group of kittens called?",
+	answers: ["Kindle", "kitten caboodle", "Kitty Cuddle", "Kittener"],
+	correctAnswer: "Kindle",
+	image: "assets/images/kittypuddle"
 }, {
-	question: "test question 9?",
-	answers: ["test answer 9.1", "test answer 9.2", "test answer 9.3", "test answer 9.4"],
-	correctAnswer: "test answer 9.4",
-	image: "placeholder9"
+	question: "Do cats have dominant paws?",
+	answers: ["A cat can be either right-pawed or left-pawed", "Right pawed", "Left pawed", "No"],
+	correctAnswer: "A cat can be either right-pawed or left-pawed",
+	image: "asset/images/catpaw"
 }, {
-	question: "test question 10?",
-	answers: ["test answer 10.1", "test answer 10.2","test answer 10.3", "test answer 10.4"],
-	correctAnswer: "test answer 10.1",
-	image: "placeholder10"
+	question: "At what age can female cats mate?",
+	answers: ["A female cat can start at 3 years old","A female cat has to wait until 2 years old", "A female cat can begin mating when she is between 5 and 9 months old.", "A female cat can begin mating when she is 18 months old."],
+	correctAnswer: "A female cat can begin mating when she is between 5 and 9 months old.",
+	image: "assets/images/pregnantcat"
 }, {
-	question: "test question 11?",
-	answers: ["test answer 11.1", "test answer 11.2","test answer 11.3", "test answer 11.4"],
-	correctAnswer: "test answer 11.1",
-	image: "placeholder11"
+	question: "Why do cats bury their feces?",
+	answers: ["Cats bury their feces for fun", "Cats bury their feces to cover their trails from predators","Cats bury their feces to dig up later", "Cats bury their feces to be assholes"],
+	correctAnswer: "Cats bury their feces to cover their trails from predators",
+	image: "assets/images/catbox"
 }, {
-	question: "test question 12?",
-	answers: ["test answer 12.1", "test answer 12.2","test answer 12.3", "test answer 12.4"],
-	correctAnswer: "test answer 12.1",
-	image: "placeholder12"
+	question: "Can cats donate blood?",
+	answers: ["No, not at all", "Yes, to humans only","No, cats are rude and dont like to.", "Cats can donate blood to other cats."],
+	correctAnswer: "Cats can donate blood to other cats.",
+	image: "assets/images/catdonate"
 }, {
-	question: "test question 13?",
-	answers: ["test answer 13.1", "test answer 13.2","test answer 13.3", "test answer 13.4"],
-	correctAnswer: "test answer 13.1",
-	image: "placeholder10" }
+	question: "Were cats mentioned in the bible?",
+	answers: ["yes, cats are holy", "The only domestic animal not mentioned in the Bible is the cat.", "Maybe", "No, cats are the devil"],
+	correctAnswer: "The only domestic animal not mentioned in the Bible is the cat.",
+	image: "assets/images.catbible" }
 
 ];
 
@@ -124,7 +124,7 @@ var game = {
 		timer = setInterval(game.countDown, 1000);
 
 		// shows timer on page
-		$("#subWrapper").html("<h2> TIME REMAINING <span id='counter'>30 </span> SECONDS</h2>");
+		$("#subWrapper").html("<h2> TIME REMAINING <span id='counter'> 30 </span> SECONDS</h2>");
 
 		// questions are shown in the div with subwrapper
 		$("#subWrapper").append("<h2>" + questions[game.currentQuestion].question + "</h2>");

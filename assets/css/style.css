@@ -1,0 +1,48 @@
+body {
+	background-image: url(../images/background.jpg);
+	background-position:center;
+	/* background-repeat: no-repeat; */
+	/* background-attachment: fixed; */
+	/* background-size:cover; */
+	/* color:red; */
+}
+
+/* .subWrapper {
+	color: lightgrey;
+} */
+
+h2 {
+	color:black;
+}
+
+.wrapper {
+background-color: white;
+text-align: center;
+width: 50%;
+margin:auto;
+}
+
+.title {
+	font-family: 'Permanent Marker', cursive, serif, sans-serif;
+	font-size: 95px;
+}
+
+.startButton {
+	color: pink;
+	width:100px;
+	height: 50px;
+	background-color:lightcyan;
+}
+
+.font {
+	color: pink;
+}
+
+.answer-button {
+	color: pink;
+	width:50%;
+	height: 100%;
+	background-color:lightcyan;
+	/* margin-left: 20px; */
+	margin-right: 20px;
+}
