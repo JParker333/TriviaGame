@@ -1,4 +1,4 @@
-
+var timer;
 // When the start button is clicked it will disapear. 
 $("#start").on("click", function () {
 	$("#start").remove();
@@ -9,7 +9,8 @@ $("#start").on("click", function () {
 // tell me if i was incorrect or correct
 // e is passing thorugh the event
 $(document).on('click', '.answer-button', function (e) {
-
+	e.preventDefault()
+	console.log('clicked function');
 	game.clicked(e);
 
 })
@@ -25,67 +26,67 @@ var questions = [{
 	question: "The penalty for killing a cat, 4,000 years ago in Egypt, was?",
 	answers: ["Stoning", "Death", "1 year in prision", "Mummification"],
 	correctAnswer: "Death",
-	image: "assets/images/catinegypt"
+	imageUrl: "assets/images/catinegypt.png"
 }, {
 	question: "How high can a cat jump?",
 	answers: ["Higher than a kite", "9 feet", "3 feet", "As much as seven times its height"],
 	correctAnswer: "As much as seven times its height",
-	image: "assets/images/catjumping"
+	imageUrl: "assets/images/catjumping.jpg"
 }, {
 	question: "How much do cats groom themselves?",
 	answers: ["A cat will spend nearly 30% of its life grooming itself", "All the time", "Cats like to go to the salon", "A cat will spend nearly 60% of its life grooming itself"],
 	correctAnswer: "A cat will spend nearly 30% of its life grooming itself",
-	image: "assets/images/catgrooming"
+	imageUrl: "assets/images/catgrooming.jpg"
 }, {
 	question: "How much do cats sleep?",
 	answers: ["Too much", "32 hours a day", "16 hours a day", "12 hours a day"],
 	correctAnswer: "16 hours a day",
-	image: "assets/images/catsleeping"
+	imageUrl: "assets/images/catsleeping.jpg"
 }, {
 	question: "What is the weight of the heaviest cat ever recorded?",
 	answers: ["46 lbs", "100 lbs", "38 lbs", "52 lbs"],
 	correctAnswer: "46 lbs",
-	image: "assets/images/fatcat"
+	imageUrl: "assets/images/fatcat.jpg"
 }, {
 	question: "How many ribs do cats have?",
 	answers: ["15 ribs", "13 ribs", "11 ribs", "20 ribs"],
 	correctAnswer: "13 ribs",
-	image: "assets/images/catribs"
+	imageUrl: "assets/images/catribs.jpg"
 }, {
 	question: "Where did black cat superstition originate?",
 	answers: ["Africa", "Asia", "Mexico", "America"],
 	correctAnswer: "America",
-	image: "assets/images/catsuper"
+	imageUrl: "assets/images/catsuper.jpg"
 }, {
 	question: "What is a group of kittens called?",
 	answers: ["Kindle", "kitten caboodle", "Kitty Cuddle", "Kittener"],
 	correctAnswer: "Kindle",
-	image: "assets/images/kittypuddle"
+	imageUrl: "assets/images/kittypuddle.jpg"
 }, {
 	question: "Do cats have dominant paws?",
 	answers: ["A cat can be either right-pawed or left-pawed", "Right pawed", "Left pawed", "No"],
 	correctAnswer: "A cat can be either right-pawed or left-pawed",
-	image: "asset/images/catpaw"
+	imageUrl: "assets/images/catpaw.jpg"
 }, {
 	question: "At what age can female cats mate?",
 	answers: ["A female cat can start at 3 years old","A female cat has to wait until 2 years old", "A female cat can begin mating when she is between 5 and 9 months old.", "A female cat can begin mating when she is 18 months old."],
 	correctAnswer: "A female cat can begin mating when she is between 5 and 9 months old.",
-	image: "assets/images/pregnantcat"
+	imageUrl: "assets/images/pregnantcat.jpg"
 }, {
 	question: "Why do cats bury their feces?",
 	answers: ["Cats bury their feces for fun", "Cats bury their feces to cover their trails from predators","Cats bury their feces to dig up later", "Cats bury their feces to be assholes"],
 	correctAnswer: "Cats bury their feces to cover their trails from predators",
-	image: "assets/images/catbox"
+	imageUrl: "assets/images/catbox.jpg"
 }, {
 	question: "Can cats donate blood?",
 	answers: ["No, not at all", "Yes, to humans only","No, cats are rude and dont like to.", "Cats can donate blood to other cats."],
 	correctAnswer: "Cats can donate blood to other cats.",
-	image: "assets/images/catdonate"
+	imageUrl: "assets/images/catdonate.jpg"
 }, {
 	question: "Were cats mentioned in the bible?",
 	answers: ["yes, cats are holy", "The only domestic animal not mentioned in the Bible is the cat.", "Maybe", "No, cats are the devil"],
 	correctAnswer: "The only domestic animal not mentioned in the Bible is the cat.",
-	image: "assets/images.catbible" }
+	imageUrl: "assets/images/catbible.jpg" }
 
 ];
 
@@ -104,7 +105,7 @@ var game = {
 
 		// reduces time --
 		game.counter--;
-
+		// console.log(game.counter);
 		// decreases the counter on the screen
 		$("#counter").html(game.counter);
 
@@ -114,14 +115,17 @@ var game = {
 			console.log("TIME UP!");
 
 			game.timeUp();
+		
 		}
 
 	},
 	// load question to the page
 	loadQuestion: function () {
-
+		clearInterval(timer);
 		// every second we will run the game.contdown function
 		timer = setInterval(game.countDown, 1000);
+
+
 
 		// shows timer on page
 		$("#subWrapper").html("<h2> TIME REMAINING <span id='counter'> 30 </span> SECONDS</h2>");
@@ -129,8 +133,10 @@ var game = {
 		// questions are shown in the div with subwrapper
 		$("#subWrapper").append("<h2>" + questions[game.currentQuestion].question + "</h2>");
 
+
 		// posting answers to the page as buttons
 		for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
+			console.log(questions[game.currentQuestion])
 
 			// placing our buttons here
 			$('#subWrapper').append('<button class="answer-button" id="button-' + i + '" data-name="' + questions[game.currentQuestion].answers[i] + '">' + questions[game.currentQuestion].answers[i] + '</button>');
@@ -140,7 +146,7 @@ var game = {
 
 	},
 	nextQuestion: function () {
-
+		
 		// set counter back to 30
 		game.counter = 30;
 
@@ -148,6 +154,7 @@ var game = {
 		$("#counter").html(game.counter);
 
 		game.currentQuestion++;
+		console.log('GameCQ: ', game.currentQuestion)
 
 		// load the question
 		game.loadQuestion();
@@ -156,7 +163,7 @@ var game = {
 	timeUp: function () {
 
 		// timer stops
-		clearInterval(timer);
+		// clearInterval(timer);
 
 		// questions unanswered increase
 		game.unanswered++;
@@ -177,6 +184,9 @@ var game = {
 			// load the next question
 			setTimeout(game.nextQuestion, 3 * 1000);
 
+			// console.log(game.results);
+			// console.log(game.nextQuestion);
+
 		}
 
 
@@ -196,7 +206,7 @@ var game = {
 
 		// reset
 
-		$("#subWrapper").append("<button id='reset'>RESET</button>");
+		$("#subWrapper").append("<button id='reset' class='reset'>RESET</button>");
 
 	},
 	clicked: function (e) {
@@ -208,9 +218,19 @@ var game = {
 
 			game.answeredCorrectly();
 		} else {
+			console.log('hi there')
 			game.answeredIncorrectly();
 		}
+// adds images to page
+		let img = $("<img class='img'>")
+		console.log(questions[game.currentQuestion].imageUrl)
+		$(img).attr("src", questions[game.currentQuestion].imageUrl);
+		console.log(img)
+
+		$("#subWrapper").append(img);
+
 	},
+
 	answeredCorrectly: function () {
 
 		console.log("CORRECT!");
@@ -222,7 +242,7 @@ var game = {
 		game.correct++;
 
 		// writes to HTML page
-		$("#subWrapper").html("<h2>YOU GOT IT RIGHT!</h2>");
+		$("#subWrapper").html("<h2 class='right'>YOU GOT IT RIGHT!</h2>");
 
 		// takes us to result screen/next question
 		if (game.currentQuestion == questions.length - 1) {
@@ -250,7 +270,7 @@ var game = {
 		game.incorrect++;
 
 		// writes to HTML page
-		$("#subWrapper").html("<h2>YOU GOT IT WRONG!</h2>");
+		$("#subWrapper").html("<h2 class='wrong'>YOU GOT IT WRONG!</h2>");
 
 		// correct answer would have been
 		$("#subWrapper").append("<h3>THE CORRECT ANSWER WAS: " + questions[game.currentQuestion].correctAnswer + "</h3>");
@@ -262,7 +282,7 @@ var game = {
 			setTimeout(game.results, 3 * 1000);
 
 		} else {
-
+			console.log('hello')
 			// load the next question
 			setTimeout(game.nextQuestion, 3 * 1000);
 		}
@@ -273,11 +293,12 @@ var game = {
 
 		// sets everything back to original amounts
 		game.currentQuestion = 0;
-		game.counter = 0;
+		// game.counter = 0;
 		game.correct = 0;
 		game.incorrect = 0;
 		game.unanswered = 0;
 		game.loadQuestion();
+
 
 	}
 }

@@ -34,6 +34,13 @@ margin:auto;
 	background-color:lightcyan;
 }
 
+.reset {
+	color: pink;
+	width:100px;
+	height: 50px;
+	background-color:lightcyan;
+}
+
 .font {
 	color: pink;
 }
@@ -41,8 +48,40 @@ margin:auto;
 .answer-button {
 	color: pink;
 	width:50%;
-	height: 100%;
+	height: 150%;
 	background-color:lightcyan;
-	/* margin-left: 20px; */
+	/* /* margin-left: 20px; */
+
 	margin-right: 20px;
+}
+.img {
+	height: 200px;
+	width: 200px;
+	border: solid;
+	border-color: pink;
+	border-width: 20px;
+}
+
+.right {
+	color:green;
+}
+
+.wrong {
+	color:red;
+}
+
+/* Media Queries */ 
+@media screen and (max-width: 980px) {
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 640px) {
+
+		
+	
 }
