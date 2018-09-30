@@ -8,6 +8,8 @@ Simply hit START to begin the game.
 
 ## Built With
 
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)-CSS
+* [HTML](https://html.com/)-HTML
 * [Jquery](https://jquery.com/) - JQuery
 * [Javascript](https://www.javascript.com/) - Javascript
 

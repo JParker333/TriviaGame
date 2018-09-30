@@ -61,7 +61,7 @@ height: 375px;
 	height: 200px;
 	width: 200px;
 	border: solid;
-	border-color: pink;
+	/* border-color: pink; */
 	border-width: 20px;
 }
 
